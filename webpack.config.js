@@ -1,20 +1,18 @@
-var webpack = require('webpack');
-var path = require('path');
+const path = require('path');
 
 module.exports = {
-    context: path.join(__dirname, "./"),
-    entry: './src/index.js',
-    output: {
-        path: path.resolve(__dirname, 'build'),
-        filename: 'app.js',
-        publicPath: '/',
-    },
+  entry: './src/index.jsx',         
+  output: {
+    path: path.resolve(__dirname, 'build'),   
+    filename: 'assets/js/app.js',             
+    publicPath: '/',                           
+  },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: 'babel-loader',  
+        use: 'babel-loader',
       },
       {
         test: /\.css$/,
