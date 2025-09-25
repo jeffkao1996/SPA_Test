@@ -5,7 +5,7 @@ module.exports = {
     context: path.join(__dirname, "./"),
     entry: './src/index.js',
     output: {
-        path: './public/assets/js',
+        path: path.resolve(__dirname, 'build'),
         filename: 'app.js'
     },
     resolve: {
