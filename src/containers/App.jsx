@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import NavBar from '../containers/NavBar'
+import Navbar from '../containers/Navbar'
 import ProductList from '../containers/ProductList'
 import Footer from '../components/Footer'
 import Helmet from "react-helmet"
@@ -14,7 +14,7 @@ class App extends Component {
 			<div>
 				<Helmet titleTemplate="Ecommerce - %s" />
 				<Laoding loading={this.props.loading} />
-				<NavBar />
+				<Navbar />
 				{this.props.children}
 				<Footer />
 			</div>
