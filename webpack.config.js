@@ -6,25 +6,23 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'app.js'
+        filename: 'app.js',
+        publicPath: '/',
     },
-    resolve: {
-        extensions: ['', '.js', '.jsx'],
-    },
-    module: {
-        loaders: [{
-            test: /\.(js|jsx)$/,
-            exclude: /node_modules/,
-            loader: "babel-loader",
-            query: {
-                presets: ['es2015', 'react']
-            }
-        }]
-    },
-    devServer: {
-      port: 3000,
-      hot: true,
-      historyApiFallback: true,
-      contentBase: "./public"
-  }
-}
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',  
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+};
