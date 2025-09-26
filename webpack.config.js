@@ -6,7 +6,7 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'app.js'
+        filename: 'app.js',
         publicPath: './',
     },
     resolve: {
@@ -18,14 +18,7 @@ module.exports = {
             exclude: /node_modules/,
             loader: "babel-loader",
             options: {
-                presets: ['es2015', 'react']
+                presets: ['@babel/preset-env', '@babel/preset-react']
             }
         }]
     },
-    devServer: {
-      port: 3000,
-      hot: true,
-      historyApiFallback: true,
-      contentBase: "./public"
-  }
-}
