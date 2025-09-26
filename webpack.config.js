@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     context: path.join(__dirname, "./"),
@@ -22,3 +23,11 @@ module.exports = {
             }
         }]
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './public/index.html', // 告訴插件你的 HTML 模板在哪裡
+            filename: 'index.html',
+            inject: 'body',
+        })
+    ]
+};
