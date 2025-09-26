@@ -1,27 +1,36 @@
-const path = require('path');
+var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.js'), 
-  output: {
-    path: path.resolve(__dirname, 'build'),       
-    filename: 'assets/js/app.js',                
-    publicPath: '/',                              
-  },
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,                          
-        exclude: /node_modules/,
-        use: 'babel-loader',
-      },
-      {
-        test: /\.css$/,                           
-        use: ['style-loader', 'css-loader'],
-      },
-    ],
-  },
-  resolve: {
-    extensions: ['.js', '.jsx'],                  
-  },
-  devtool: 'source-map',                          
-};
+    context: path.join(__dirname, "./"),
+    entry: './src/index.js',
+    output: {
+        path: path.resolve(__dirname, 'public/assets/js'),
+        filename: 'app.js'
+    },
+    resolve: {
+        extensions: ['.js', '.jsx'],
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react']
+                    }
+                }
+            }
+        ]
+    },
+    devServer: {
+        port: 3000,
+        hot: true,
+        historyApiFallback: true,
+        static: {
+            directory: path.join(__dirname, 'public')
+        }
+    }
+}
