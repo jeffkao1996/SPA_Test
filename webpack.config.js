@@ -12,6 +12,11 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.jsx'],
+        fallback: {
+            "crypto": false,
+            "stream": false,
+            "randombytes": false // 告訴 Webpack 忽略這個 Node 內建模組
+        }
     },
     module: {
         rules: [{
