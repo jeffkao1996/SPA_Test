@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "React-Redux Ecommerce Application",
   "main": "index.js",
+  "engines": {
+    "node": "18"
+  },
+  
   "scripts": {
     "build": "webpack --mode production",
     "server": "webpack serve --mode development"
