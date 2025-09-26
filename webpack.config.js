@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ProvidePlugin = webpack.ProvidePlugin;
 
 module.exports = {
     context: path.join(__dirname, "./"),
@@ -15,7 +16,8 @@ module.exports = {
         fallback: {
             "crypto": false,
             "stream": false,
-            "randombytes": false // 告訴 Webpack 忽略這個 Node 內建模組
+            "randombytes": false,
+            "buffer": require.resolve("buffer/") 
         }
     },
     module: {
@@ -33,6 +35,9 @@ module.exports = {
             template: path.resolve(__dirname, 'public/index.html'), 
             filename: 'index.html',
             inject: 'body',
-        })
+         }),
+        new ProvidePlugin({
+            Buffer: ['buffer', 'Buffer'],
+        }),
     ]
 };
