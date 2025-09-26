@@ -25,7 +25,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './public/index.html', // 告訴插件你的 HTML 模板在哪裡
+            template: path.resolve(__dirname, 'public/index.html'), 
             filename: 'index.html',
             inject: 'body',
         })
