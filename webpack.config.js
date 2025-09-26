@@ -5,33 +5,26 @@ module.exports = {
     context: path.join(__dirname, "./"),
     entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, 'public/assets/js'),
-        filename: 'app.js',
-        publicPath: '/assets/js/',  
+        path: path.resolve(__dirname, 'build'),
+        filename: 'app.js'
     },
     resolve: {
-        extensions: ['.js', '.jsx'],  
+        extensions: ['', '.js', '.jsx'],
     },
     module: {
-        rules: [
-            {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react']
-                    }
-                }
+        loaders: [{
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            loader: "babel-loader",
+            query: {
+                presets: ['es2015', 'react']
             }
-        ]
+        }]
     },
     devServer: {
-        port: 3000,
-        hot: true,
-        historyApiFallback: true,
-        static: {
-            directory: path.join(__dirname, 'public')
-        }
-    }
+      port: 3000,
+      hot: true,
+      historyApiFallback: true,
+      contentBase: "./public"
+  }
 }
